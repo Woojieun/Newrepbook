@@ -16,6 +16,9 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -36,8 +39,11 @@
       <label>6글자 이상 입력해주세요</label>
     </div>
     <p></p>
-    <button type="button" class="btn btn-light btn-outline-secondary login">로그인</button>
-    <button type="button" class="btn btn-light btn-outline-secondary login">회원가입</button>
+    <button type="button" id="loginmenu" class="btn btn-light btn-outline-secondary login">로그인</button>
+
+     <a href="admin_join.html" style="color: rgb(243, 228, 168);">
+      <button type="button" id="joinmenu" class="btn btn-light btn-outline-secondary ">회원가입</button>
+    </a>
 
   </div>
   <!-- 로그인 폼 끝 -->
@@ -52,6 +58,7 @@
     var config = {
       apiKey: "AIzaSyD5Siv5pV8pGTXpgd8OAMdQd8JTp390u5w",
       authDomain: "newrepbook-587cf.firebaseapp.com",
+      databaseURL: "https://newrepbook-587cf-default-rtdb.firebaseio.com",
       projectId: "newrepbook-587cf",
       storageBucket: "newrepbook-587cf.appspot.com",
       messagingSenderId: "986136626008",
