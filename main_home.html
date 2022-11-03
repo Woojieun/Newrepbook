@@ -103,7 +103,8 @@
           </li>
         </ul>
 
-        <a id="main_name"></a>
+        <li><a id="main_name"></a></li>
+
         <a href="admin_login.html" style="color: white ;">
           <form class="d-flex" role="logout">
             <button type="button" class="btn btn-light login">로그아웃</button>
@@ -246,27 +247,27 @@
       });
     });
 
-    //저장 버튼 눌렀을 때 호출 되는 함수
-    function save() {
+    // //저장 버튼 눌렀을 때 호출 되는 함수
+    // function save() {
 
-      //webPosts 라는 테이블을 만들고 하위 데이터에 유저 아이디를 넣어준다. 그곳에 push로 가상의 키를 넣고, 객체를 넣어준다.!!!!
-      var webPostsRef = firebaseDatabase.ref("webPosts");
+    //   //webPosts 라는 테이블을 만들고 하위 데이터에 유저 아이디를 넣어준다. 그곳에 push로 가상의 키를 넣고, 객체를 넣어준다.!!!!
+    //   var webPostsRef = firebaseDatabase.ref("webPosts");
 
-      // 해당 객체의 key 값이 자동으로 생성된다.
-      var webPosts = webPostsRef.push(); // 해당 객체의 key 값이 자동으로 생성된다.
+    //   // 해당 객체의 key 값이 자동으로 생성된다.
+    //   var webPosts = webPostsRef.push(); // 해당 객체의 key 값이 자동으로 생성된다.
 
-      //로그인한 유저의 pk값,이름,내용,시간 데이터
-      var obj = {
-        staffkey: loginStaffKey, // 직원 UID
-        name: name, // 직원 이름
-        comment: comment // 글 내용
-      };
+    //   //로그인한 유저의 pk값,이름,내용,시간 데이터
+    //   var obj = {
+    //     staffkey: loginStaffKey, // 직원 UID
+    //     name: name, // 직원 이름
+    //     comment: comment // 글 내용
+    //   };
 
-      //위에서 thankRef.push()로 만들어진 key아래 위치에 저장해준다.
-      webPosts.set(obj);
+    //   //위에서 thankRef.push()로 만들어진 key아래 위치에 저장해준다.
+    //   webPosts.set(obj);
 
-      $('#comment').val("");
-    }
+    //   $('#comment').val("");
+    // }
   </script>
 </body>
 
