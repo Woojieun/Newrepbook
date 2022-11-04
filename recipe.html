@@ -83,6 +83,10 @@
               관리자 커뮤니티
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="admin_list.html">관리자 목록</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" href="admin_announce.html">공지사항</a></li>
             </ul>
           </li>
@@ -124,15 +128,30 @@
                 <nav class="navbar bg-light">
                   <div class="container-fluid">
                     <form class="d-flex" role="search">
-                      <select class="form-select myjob" id="type" aria-label="Default select example" id="my">
+                      <select class="form-select myjob me-1" id="type" aria-label="Default select example" id="my">
                         <!-- <option value="기본"></option> -->
-                          <option value="아이디">아이디</option>
-                          <option value="회원명">회원명</option>
+                          <option value="아이디">레시피명</option>
                         </select>
 
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+
+                    <form class="d-flex" role="search">
+                      <select class="form-select myjob me-2" id="type" aria-label="Default select example" id="my">
+                        <!-- <option value="기본"></option> -->
+                        <option value="회원명">카테고리</option>
+                          <option value="회원명">한식</option>
+                          <option value="회원명">일식</option>
+                          <option value="회원명">중식</option>
+                          <option value="회원명">초급</option>
+                          <option value="회원명">중급</option>
+                          <option value="회원명">고급</option>
+                        </select>
+                      <button class="btn btn-outline-success" type="submit">Apply</button>
+                    </form>
+
+
                   </div>
                 </nav>
                   

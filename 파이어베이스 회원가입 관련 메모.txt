@@ -1,0 +1,12 @@
+파이어베이스 리얼타임
+
+=> 회원 정보 삭제 할 때 리얼타임 DB에서만 지우는게 아니라 Authentication에서도 계정을 지워줘야 한다
+
+회원 가입 하고 나서 저장 되는 정보 pwd가 안보임
+
+          //저장 형식
+          var obj = {
+            name: name,
+            email: email,
+            password: password
+          };
