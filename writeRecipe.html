@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="main.js"></script>
+
+</head>
+
+      <!-- 부트 스트랩 연결 -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- 부트스트랩 CSS만 붙여왔을 때는 드롭다운이 작동을 안함, 그래서 부트스르탭 번들 코드를 붙여넣으니까 작동함 -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<body>
+
+  <form>
+
+    <label>레시피명 : </label>
+    <input type="RecipeTitle" class="#" placeholder="">
+    <br>
+    <br>
+
+    <label>음식 대표 사진</label>
+    <br>
+
+    <section id="ex9">
+      <style>
+          #ex9 .upload-box{
+              width:500px;
+              height: 300px;
+              border:1px solid gray;
+              box-shadow: 2px 3px 9px hsl(0, 0%, 47%);
+              padding:10px;
+          }
+      </style>
+      <div class="upload-box">
+          <button class="btn-upload">파일선택</button>
+          <input class="btn-file d-none" type="file">
+                  <!--파일 input box 형태-->     
+      </div>
+  </section>
+  <hr>
+
+  </form>
+
+</body>
+</html>
