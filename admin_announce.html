@@ -83,7 +83,7 @@
               관리자 커뮤니티
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="admin_list.html">관리자 목록</a></li>
+              <li><a class="dropdown-item" href="admin_list.html">관리자 관리</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -117,7 +117,7 @@
           <!-- <hr class="myHr">  -->
           <div class="row">
               <div class="col-7">
-                  <h2>관리자 공지사항</h2>
+                  <h2>회원 목록</h2>
                 </div>
           </div>
           <br>
@@ -125,23 +125,24 @@
           <div class="row">
               <div class="col">
 
-                <nav class="navbar bg-light">
-                  <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                      <select class="form-select myjob me-1" id="type" aria-label="Default select example" id="my">
-                        <!-- <option value="기본"></option> -->
-                          <option value="아이디">아이디</option>
-                          <option value="회원명">회원명</option>
-                        </select>
-
-                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                  </div>
-                </nav>
+                  <nav class="navbar navbar-light bg-light">
+                      <div class="container-fluid">
+                        <form class="d-flex">
+                          <select class="form-select myjob" id="type" aria-label="Default select example" id="my">
+                            <!-- <option value="기본"></option> -->
+                              <option value="아이디">아이디</option>
+                              <option value="회원명">회원명</option>
+                            </select>
+                            
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="myser">
+                          <button class="btn btn-outline-success" type="submit" id="myser2">검색</button>
+                        </form>
+                      </div>
+                    
+                    </nav>
                   
               </div>
-              <div>
+              <div class="col">
                 
               </div>
           </div>
@@ -152,13 +153,13 @@
                           <thead class="table-light">
                               <thead>
                                 
-                                <tr>
+                              <tr>
                                   <th scope="col">#</th>
-                                  <th scope="col">제목</th>
-                                  <th scope="col"></th>
-                                  <th scope="col"></th>
-                                  <th scope="col">작성자</th>
+                                  <th scope="col">회원명</th>
                                   <th scope="col">아이디</th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
+                                  <th scope="col"></th>
                                   <th scope="col">회원등급</th>
                               </tr>
                               </thead>
@@ -166,47 +167,45 @@
                           <tbody>
                             <tr>
                               <th scope="row">1</th>
-                              <td>긴급!! 꼭 봐주세요</td>
+                              <td>Mark</td>
+                              <td>hjihidhf1</td>
                               <td></td>
                               <td></td>
-                              <td>우지은</td>
-                              <td>jieun987</td>
-                              <td>관리자</td>
+                              <td></td>
+                              <td>일반</td>
                             </tr>
                             <tr>
                               <th scope="row">2</th>
-                              <td>Issue confirm</td>
+                              <td>Jacob</td>
+                              <td>sdfsc</td>
                               <td></td>
                               <td></td>
-                              <td>최수연</td>
-                              <td>suyeonchoi</td>
-                              <td>관리자</td>
+                              <td></td>
+                              <td>일반</td>
                             </tr>
                             <tr>
                               <th scope="row">3</th>
-                              <td>UI 오류 보고</td>
+                              <td>박나리</td>
+                              <td>vwe134</td>
                               <td></td>
                               <td></td>
-                              <td>박태현</td>
-                              <td>parkTeTe</td>
-                              <td>관리자</td>
+                              <td></td>
+                              <td>일반</td>
                             </tr>
                             <tr>
                               <th scope="row">4</th>
-                              <td>이번 달 보너스의 주인공은?</td>
+                              <td>천수연</td>
+                              <td>dgbnfg3</td>
                               <td></td>
                               <td></td>
-                              <td>전하윤</td>
-                              <td>Hayun</td>
-                              <td>관리자</td>
+                              <td></td>
+                              <td>일반</td>
                             </tr>
                           </tbody>
                           
                         </table>
               </div>
           </div>
-          <br>
-          <br>
         
           <!-- 게시판 페이지 부분 폼 => 한 페이지당 10명씩 한번에 5페이지, 양쪽 끝 버튼은 맨 처음과 맨 끝으로 이동 -->
 
@@ -218,7 +217,7 @@
           (단, 계산된 값이 총 페이지수보다 많으면 마지막 페이지는 은 총 페이지 수이다.) -->
 
           <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
@@ -247,11 +246,9 @@
             </ul>
           </nav>
 
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
-            <button class="btn btn-primary btn-warning" type="button">글쓰기</button>
-          </div>
-
+          <!-- <div class="col-5">
+              <button class="btn btn-outline-secondary mybtn" type="button">글쓰기</button> 
+          </div> -->
       </div>
       
          

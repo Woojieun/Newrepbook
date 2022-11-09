@@ -25,40 +25,28 @@
 <body style="background-color: rgb(243, 228, 168);">
 
   <!-- 로그인 폼 시작 -->
-  <div class="container w-25 position-absolute top-50 start-50 translate-middle">
-    <h1 style="text-align: center;">로그인</h1>
-    
-    <br>
-    
-    <div class="#">
-    <div class="#">
-    
+  <div class="container">
+    <h1>로그인</h1>
+    <p></p>
+    <div class="w-50">
       <label for="email">Email address:</label>
-      <input type="email" class="form-control " id="email">
+      <input type="email" class="form-control" id="email">
     </div>
-    
-    <br>
-    
-    <div class="#">
+    <p></p>
+    <div class="w-50">
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd">
       <label>6글자 이상 입력해주세요</label>
     </div>
-    
-    </div>
-    
-    <br>
-    <br>
-    
-    <div style="text-align: center;">
-    
-    <button type="button" id="loginmenu" class="btn btn-warning  login ">로그인</button>
-    
+    <p></p>
+    <button type="button" id="loginmenu" class="btn btn-light btn-outline-secondary login">로그인</button>
+
      <a href="admin_join.html" style="color: rgb(243, 228, 168);">
-      <button type="button" id="joinmenu" class="btn btn-warning ">회원가입</button>
+      <button type="button" id="joinmenu" class="btn btn-light btn-outline-secondary ">회원가입</button>
     </a>
-    
-    </div>
+
+  </div>
+  <!-- 로그인 폼 끝 -->
 
   <!-- 파이어베이스 연결 -->
   <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>

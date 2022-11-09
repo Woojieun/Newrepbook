@@ -83,7 +83,7 @@
               관리자 커뮤니티
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="admin_list.html">관리자 목록</a></li>
+              <li><a class="dropdown-item" href="admin_list.html">관리자 관리</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -125,38 +125,26 @@
           <div class="row">
               <div class="col">
 
-                <nav class="navbar bg-light">
-                  <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                      <select class="form-select myjob me-1" id="type" aria-label="Default select example" id="my">
-                        <!-- <option value="기본"></option> -->
-                          <option value="아이디">레시피명</option>
-                        </select>
-
-                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-
-                    <form class="d-flex" role="search">
-                      <select class="form-select myjob me-2" id="type" aria-label="Default select example" id="my">
-                        <!-- <option value="기본"></option> -->
-                        <option value="회원명">카테고리</option>
-                          <option value="회원명">한식</option>
-                          <option value="회원명">일식</option>
-                          <option value="회원명">중식</option>
-                          <option value="회원명">초급</option>
-                          <option value="회원명">중급</option>
-                          <option value="회원명">고급</option>
-                        </select>
-                      <button class="btn btn-outline-success" type="submit">Apply</button>
-                    </form>
-
-
-                  </div>
-                </nav>
+                  <nav class="navbar navbar-light bg-light">
+                      <div class="container-fluid">
+                        <form class="d-flex">
+                          <select class="form-select myjob" id="type" aria-label="Default select example" id="my">
+                            <!-- <option value="기본"></option> -->
+                              <option value="레시피명">레시피명</option>
+                              <option value="한식">한식</option>
+                              <option value="중식">중식</option>
+                              <option value="일식">일식</option>
+                            </select>
+                            
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="myser">
+                          <button class="btn btn-outline-success" type="submit" id="myser2">검색</button>
+                        </form>
+                      </div>
+                    
+                    </nav>
                   
               </div>
-              <div>
+              <div class="col">
                 
               </div>
           </div>
@@ -220,8 +208,7 @@
                         </table>
               </div>
           </div>
-          <br>
-          <br>
+        
           <!-- 게시판 페이지 부분 폼 => 한 페이지당 10명씩 한번에 5페이지, 양쪽 끝 버튼은 맨 처음과 맨 끝으로 이동 -->
 
           
@@ -232,7 +219,7 @@
           (단, 계산된 값이 총 페이지수보다 많으면 마지막 페이지는 은 총 페이지 수이다.) -->
 
           <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
@@ -261,11 +248,13 @@
             </ul>
           </nav>
 
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
-          <button class="btn btn-primary btn-warning" type="button">레시피 작성</button>
+          <div class="#">
+          <button type="button" class="btn btn-warning">레시피 작성</button>
         </div>
-        
+
+          <!-- <div class="col-5">
+              <button class="btn btn-outline-secondary mybtn" type="button">글쓰기</button> 
+          </div> -->
       </div>
       
          
