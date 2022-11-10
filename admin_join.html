@@ -24,8 +24,8 @@
 <body style="background-color: rgb(243, 228, 168);">
 
   <!-- 가입 폼 시작 -->
-  <div class="container">
-    <h1>회원가입</h1>
+  <div class="container w-25 position-absolute top-50 start-50 translate-middle">
+    <h1 style="text-align: center;">회원가입</h1>
     <p></p>
     <div class="form-group">
       <label for="name">Name:</label>
@@ -42,7 +42,11 @@
       <input type="password" class="form-control" id="pwd">
     </div>
     <p></p>
-    <button type="button" class="btn btn-light btn-outline-secondary join">회원가입</button>
+    <br>
+
+    <div style="text-align: center;">
+    <button type="button" class="btn btn-warning join">회원가입</button>
+    </div>
 
   </div>
   <!-- 가입 폼 끝 -->
@@ -105,7 +109,7 @@
           var obj = {
             name: name,
             email: email,
-            password : password
+            password: password
           };
 
           ref.set(obj); // 고유한 자식 키가 하나 생셩이 되면서 json 삽입

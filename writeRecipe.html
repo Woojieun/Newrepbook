@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-  <script src="main.js"></script>
-
 </head>
 
       <!-- 부트 스트랩 연결 -->
@@ -22,33 +20,36 @@
 
   <form>
 
-    <label>레시피명 : </label>
-    <input type="RecipeTitle" class="#" placeholder="">
-    <br>
-    <br>
-
     <label>음식 대표 사진</label>
     <br>
+  <div id="drop" style="border:1px solid black; width:700px; height:500px; padding:3px">
+    <div id="thumbnails">
+    </div>
+  </div>
 
-    <section id="ex9">
-      <style>
-          #ex9 .upload-box{
-              width:500px;
-              height: 300px;
-              border:1px solid gray;
-              box-shadow: 2px 3px 9px hsl(0, 0%, 47%);
-              padding:10px;
-          }
-      </style>
-      <div class="upload-box">
-          <button class="btn-upload">파일선택</button>
-          <input class="btn-file d-none" type="file">
-                  <!--파일 input box 형태-->     
-      </div>
-  </section>
-  <hr>
+  <br>
+  <br>
+
+  <label>레시피명</label>
+  <br>
+  <input type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px;">
+  <br>
+  <br>
+
+  <label>간단 소개</label>
+  <br>
+  <input type="RecipeTitle" class="#" placeholder="레시피의 간단한 설명을 적어주세요" style="width:400px; height:200px;">
+  <br>
+  <br>
+
+  <label>레시피 카테고리 선택</label>
+  <br>
+  <input type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px ;">
+  <br>
+  <br>
 
   </form>
 
+  <script src="./writeRecipe.js"></script>
 </body>
 </html>
