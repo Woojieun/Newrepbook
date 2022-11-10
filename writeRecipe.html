@@ -44,9 +44,73 @@
 
   <label>레시피 카테고리 선택</label>
   <br>
-  <input type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px ;">
+
+  <input type="tag1" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag1">
+
+  <select class="form-select form-select-sm" style="width: 100px; display: inline-block;" onchange="handleOnChange1(this)">
+    <option selected></option>
+    <option value="1">한식</option>
+    <option value="2">일식</option>
+    <option value="3">중식</option>
+    <option value="3">양식</option>
+  </select>
+
+ <br>
+
+  <input type="tag2" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag2">
+
+  <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 100px; display: inline-block;" onchange="handleOnChange2(this)">
+    <option selected></option>
+    <option value="육류">육류</option>
+    <option value="해산물">해산물</option>
+  </select>
+  
+  <br>
+
+  <input type="tag3" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag3">
+
+  <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 100px; display: inline-block;" onchange="handleOnChange3(this)">
+    <option selected></option>
+    <option value="1">초급</option>
+    <option value="2">중급</option>
+    <option value="3">고급</option>
+  </select>
+
+  <br>
+
+  <input type="tag4" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag4">
+
+  <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 100px; display: inline-block;" onchange="handleOnChange4(this)">
+    <option selected></option>
+    <option value="1">비건</option>
+    <option value="2">명절</option>
+  </select>
+  
   <br>
   <br>
+
+  <label>재료</label>
+  <input type="human" class="#" placeholder="인수선택" style="width:100px;" id="human">
+
+  <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 100px; display: inline-block;" onchange="handleOnChange5(this)">
+    <option selected></option>
+    <option value="1">1인분</option>
+    <option value="2">2인분</option>
+    <option value="3">3인분</option>
+    <option value="4">4인분</option>
+  </select>
+  <br>
+  <label>----------------------------------------------------------</label>
+  <br>
+  <label>재료</label> <br>
+  <input type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <button>+</button>
+  <br>
+  <label>--------------------------------------------</label>
+  <br>
+  <label>양념</label> <br>
+  <input type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <button>+</button>
 
   </form>
 
