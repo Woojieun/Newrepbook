@@ -16,13 +16,13 @@
     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<body>
+<body style="background-color: rgb(243, 228, 168);">
 
+  <div class="position-absolute top-50 start-50 translate-middle mt-5">
   <form>
 
-    <label>음식 대표 사진</label>
-    <br>
-  <div id="drop" style="border:1px solid black; width:700px; height:500px; padding:3px">
+    <h5>음식 대표 사진</h5>
+  <div id="drop" placeholder="음식 대표 사진을 드래그해서 올려주세요"  style="border:1px solid black; width:700px; height:500px; padding:3px; background-color: white; color : black; " >
     <div id="thumbnails">
     </div>
   </div>
@@ -30,19 +30,19 @@
   <br>
   <br>
 
-  <label>레시피명</label>
+  <h5>레시피명</h5>
   <br>
   <input type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px;">
   <br>
   <br>
 
-  <label>간단 소개</label>
+  <h5>간단 소개</h5>
   <br>
   <input type="RecipeTitle" class="#" placeholder="레시피의 간단한 설명을 적어주세요" style="width:400px; height:200px;">
   <br>
   <br>
 
-  <label>레시피 카테고리 선택</label>
+  <h5>레시피 카테고리 선택</h5>
   <br>
 
   <input type="tag1" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag1">
@@ -113,6 +113,7 @@
   <button>+</button>
 
   </form>
+  </div>
 
   <script src="./writeRecipe.js"></script>
 </body>
