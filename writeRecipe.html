@@ -16,12 +16,13 @@
     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<body style="background-color: rgb(243, 228, 168);">
+<body class="position-relative"  style="background-color: rgb(243, 228, 168);">
 
-  <div class="position-absolute top-50 start-50 translate-middle mt-5">
+  <div class="position-absolute top-0 start-50 translate-middle-x">
   <form>
+    <br>
 
-    <h5>음식 대표 사진</h5>
+    <h5>음식 대표 사진</h5><label style= "size: 3px; color: rgb(93, 93, 93);">첨부할 이미지를 끌어다 놔주세요</label>
   <div id="drop" placeholder="음식 대표 사진을 드래그해서 올려주세요"  style="border:1px solid black; width:700px; height:500px; padding:3px; background-color: white; color : black; " >
     <div id="thumbnails">
     </div>
@@ -31,20 +32,16 @@
   <br>
 
   <h5>레시피명</h5>
-  <br>
   <input type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px;">
   <br>
   <br>
 
   <h5>간단 소개</h5>
-  <br>
   <input type="RecipeTitle" class="#" placeholder="레시피의 간단한 설명을 적어주세요" style="width:400px; height:200px;">
   <br>
   <br>
 
   <h5>레시피 카테고리 선택</h5>
-  <br>
-
   <input type="tag1" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag1">
 
   <select class="form-select form-select-sm" style="width: 100px; display: inline-block;" onchange="handleOnChange1(this)">
@@ -89,7 +86,7 @@
   <br>
   <br>
 
-  <label>재료</label>
+  <label>인분</label>
   <input type="human" class="#" placeholder="인수선택" style="width:100px;" id="human">
 
   <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 100px; display: inline-block;" onchange="handleOnChange5(this)">
@@ -97,20 +94,46 @@
     <option value="1">1인분</option>
     <option value="2">2인분</option>
     <option value="3">3인분</option>
-    <option value="4">4인분</option>
+    <option value="4">4인분</option>x
   </select>
   <br>
   <label>----------------------------------------------------------</label>
   <br>
-  <label>재료</label> <br>
-  <input type="infood" class="#" placeholder="재료 입력" style="width:250px;">
-  <button>+</button>
+  <label>재료</label>   <button style="width: 30px;">+</button> <button  style="width: 30px;">-</button>
+  <br>
+  <br>
+  <input id="f1"  type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="f2" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="f3" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="f4" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="f5" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
   <br>
   <label>--------------------------------------------</label>
   <br>
-  <label>양념</label> <br>
-  <input type="infood" class="#" placeholder="재료 입력" style="width:250px;">
-  <button>+</button>
+  <label>양념</label> <button style="width: 30px;">+</button> <button  style="width: 30px;">-</button>
+  <br>
+  <input id="ff1" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="ff2" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="ff3" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="ff4" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+  <input id="ff5" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+  <br>
+
+  <br>
+  <!-- <a class="#" href="./add_admin.html" style="text-decoration-line: none ;"> -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-middle">
+      <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
+      <button class="btn btn-primary btn-warning" type="button">레시피 등록</button>
+    </div>
+  <!-- </a> -->
 
   </form>
   </div>
