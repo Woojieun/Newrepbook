@@ -103,11 +103,11 @@
           </li>
         </ul>
 
-        <a id="main_name"></a>
+        <a id="main_name" style="text-decoration-line: none; color:black" class="mx-4"></a>
 
         <a href="admin_login.html" style="color: white ;">
           <form class="d-flex" role="logout">
-            <button type="button" class="btn btn-light login">로그아웃</button>
+            <button id="logoutmenu" type="button" class="btn btn-light">로그아웃</button>
           </form>
         </a>
 
@@ -118,18 +118,23 @@
   <br>
 
   <!-- 최신 레시피 캐러셀 -->
-  <h3 style="color:black; text-align: center;"> < 최신 레시피 > </h3>
+  <h3 style="color:black; text-align: center;">
+    < 최신 레시피>
+  </h3>
   <br>
   <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators" style="color:white ;">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner" style="text-align: center ;">
 
       <div class="carousel-item active">
-        <img src="소곱창 구이.jpg" width="900" height="600"  alt="...">
+        <img src="소곱창 구이.jpg" width="900" height="600" alt="...">
         <div class="carousel-caption">
           <h5 style="color:white ;">소곱창 구이</h5>
           <p style="color:white ;">지글지글 맛있는 소곱창 구이</p>
@@ -137,7 +142,7 @@
       </div>
 
       <div class="carousel-item">
-        <img src="알탕.jpg" width="900" height="600"  alt="...">
+        <img src="알탕.jpg" width="900" height="600" alt="...">
         <div class="carousel-caption">
           <h5 style="color:white ;">알탕</h5>
           <p style="color:white ;">해장하기 딱 좋은 얼큰 시원 알탕</p>
@@ -145,7 +150,7 @@
       </div>
 
       <div class="carousel-item">
-        <img src="육회.jpg" width="900" height="600"  alt="...">
+        <img src="육회.jpg" width="900" height="600" alt="...">
         <div class="carousel-caption">
           <h5 style="color:white ;">육회</h5>
           <p style="color:white ;">입에서 살살 녹는 육회</p>
@@ -162,9 +167,6 @@
       <span class="visually-hidden">다음</span>
     </button>
   </div>
-
-  
-
 
 
   <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
@@ -208,11 +210,10 @@
           firebaseDatabase.ref("staffs/" + staff.uid).once('value').then(function (snapshot) {
 
             //자바스크립트 dom 선택자를 통해서 네비게이션 메뉴의 엘리먼트 변경해주기
-            document.getElementById("loginmenu").textContent = "로그아웃";
-            document.getElementById("loginmenu").href = "admin_logout.html";
-
-            document.getElementById("main_name").textContent = snapshot.val().name + " 님"; // 로그인히면 직원 이름 메인에 뜨기
-            document.getElementById("joinmenu").href = "admin_join.html";
+            document.getElementById("logoutmenu").textContent = "로그아웃";
+            document.getElementById("logoutmenu").href = "admin_logout.html";
+            document.getElementById("main_name").textContent = snapshot.val().name + "님"; // 로그인히면 직원 이름 메인에 뜨기
+            document.getElementById("main_name").href = "#";
 
             name = snapshot.val().name; //직원 이름은 계속 사용할거기 때문에 전역변수
             loginStaffKey = snapshot.key; //로그인한 직원의 key도 계속 쓸 것이기 때문에 전역변수
@@ -228,48 +229,6 @@
         }
       });
     }
-
-    // 
-    $(document).ready(function () {
-
-      //메인화면 저장버튼 눌렀을 때
-      $(document).on('click', '.write', function () {
-
-        //네비게이션 메뉴의 text값 가져오기
-        var seseionCheck = document.getElementById("loginmenu").textContent;
-
-        //내가 쓴글 가져오기 - jquery방식으로 가져왔다.
-        comment = $('#comment').val();
-        if (seseionCheck == "로그아웃") {
-          //저장하기
-          save();
-        } else {
-          alert("로그인이 필요한 서비스 입니다.")
-        }
-      });
-    });
-
-    // //저장 버튼 눌렀을 때 호출 되는 함수
-    // function save() {
-
-    //   //webPosts 라는 테이블을 만들고 하위 데이터에 유저 아이디를 넣어준다. 그곳에 push로 가상의 키를 넣고, 객체를 넣어준다.!!!!
-    //   var webPostsRef = firebaseDatabase.ref("webPosts");
-
-    //   // 해당 객체의 key 값이 자동으로 생성된다.
-    //   var webPosts = webPostsRef.push(); // 해당 객체의 key 값이 자동으로 생성된다.
-
-    //   //로그인한 유저의 pk값,이름,내용,시간 데이터
-    //   var obj = {
-    //     staffkey: loginStaffKey, // 직원 UID
-    //     name: name, // 직원 이름
-    //     comment: comment // 글 내용
-    //   };
-
-    //   //위에서 thankRef.push()로 만들어진 key아래 위치에 저장해준다.
-    //   webPosts.set(obj);
-
-    //   $('#comment').val("");
-    // }
   </script>
 </body>
 
