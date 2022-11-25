@@ -262,7 +262,7 @@
     var rowNum = 0;
 
     const db = getDatabase(app);
-    const dbref = ref(db, 'staffs/' + );
+    const dbref = ref(db, 'staffs');
 
     onValue(dbref, (snapshot) => {
       snapshot.forEach((childSnapshot) => {
