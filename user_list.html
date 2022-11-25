@@ -130,8 +130,8 @@
                     <form class="d-flex" role="search">
                       <select class="form-select myjob me-1" id="type" aria-label="Default select example" id="my">
                         <!-- <option value="기본"></option> -->
-                          <option value="아이디">아이디</option>
                           <option value="회원명">회원명</option>
+                          <option value="닉네임">닉네임</option>
                         </select>
 
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -148,111 +148,35 @@
          
           <div class="row">
               <div class="col">
-                  <table class="table table-hover mytb">
+                  <table class="table table-hover mytb" id="userDataTable">
                           <thead class="table-light">
                               <thead>
                                 
                               <tr>
                                   <th scope="col">#</th>
                                   <th scope="col">회원명</th>
-                                  <th scope="col">아이디</th>
-                                  <th scope="col"></th>
-                                  <th scope="col"></th>
-                                  <th scope="col"></th>
+                                  <th scope="col">닉네임</th>
+                                  <th scope="col">이메일</th>
                                   <th scope="col">회원등급</th>
                               </tr>
                               </thead>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">1</th>
+                            <!-- <tr>
+                              <td>1</td>
                               <td>Mark</td>
-                              <td>hjihidhf1</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>markyy</td>
+                              <td>ahjfhakaGmaiskdfjlj</td>
                               <td>일반</td>
-                            </tr>
-                            <tr>
+                            </tr> -->
+                            <!-- <>
                               <th scope="row">2</th>
                               <td>Jacob</td>
                               <td>sdfsc</td>
                               <td></td>
                               <td></td>
                               <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>박나리</td>
-                              <td>vwe134</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">4</th>
-                              <td>천수연</td>
-                              <td>dgbnfg3</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">5</th>
-                              <td>백하윤</td>
-                              <td>ejlasdipo</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">6</th>
-                              <td>김태수</td>
-                              <td>qmldjd</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">7</th>
-                              <td>서유현</td>
-                              <td>1asdas</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">8</th>
-                              <td>김건우</td>
-                              <td>rszjxkl</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">9</th>
-                              <td>sam</td>
-                              <td>smams</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">10</th>
-                              <td>tofu78</td>
-                              <td>qdkjslkjz</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>일반</td>
+                              <td>일반</td>                         
                             </tr>
                           </tbody>
                           
@@ -306,5 +230,64 @@
       </div>
     </div>
   </nav>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyD5Siv5pV8pGTXpgd8OAMdQd8JTp390u5w",
+      authDomain: "newrepbook-587cf.firebaseapp.com",
+      databaseURL: "https://newrepbook-587cf-default-rtdb.firebaseio.com",
+      projectId: "newrepbook-587cf",
+      storageBucket: "newrepbook-587cf.appspot.com",
+      messagingSenderId: "986136626008",
+      appId: "1:986136626008:web:bdd8f7beeceae8f66c5b2d",
+      measurementId: "G-C25WXHVHZE"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {getDatabase, ref, set, update, remove, onValue}
+    from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+
+    //$('#adminListDbTable td').remove();
+    //console.log("test")
+    var rowNum = 0;
+
+    const db = getDatabase(app);
+    const dbref = ref(db, 'Users');
+
+    onValue(dbref, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const childKey = childSnapshot.key;
+        const childData = childSnapshot.val();
+
+        rowNum += 1;
+        var row =
+        "<tr><td>" + rowNum +
+          "</td><td>" + childData.name + "</td><td>" + childData.nick +
+            "</td><td>" + childData.email + "</td><td>" + "일반" +
+              "</td></tr>"
+              console.log(row);
+
+        $(row).appendTo('#userDataTable')
+
+      });
+    }, {
+      onlyOnce: true
+    });
+
+
+  </script>
+
 </body>
 </html>
