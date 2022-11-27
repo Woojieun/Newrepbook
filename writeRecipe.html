@@ -22,9 +22,14 @@
   <form>
     <br>
 
+    <h5>작성일</h5>
+    <input id="date" type="RecipeDate" class="#" placeholder="ex.2022.11.27" style="width:400px;">
+    <br>
+    <br>
+
     <h5>음식 대표 사진</h5><label style= "size: 3px; color: rgb(93, 93, 93);">첨부할 이미지를 끌어다 놔주세요</label>
   <div id="drop" placeholder="음식 대표 사진을 드래그해서 올려주세요"  style="border:1px solid black; width:700px; height:500px; padding:3px; background-color: white; color : black; " >
-    <div id="thumbnails">
+    <div id="thumbnails" style="width:700px; height:500px">
     </div>
   </div>
 
@@ -32,12 +37,12 @@
   <br>
 
   <h5>레시피명</h5>
-  <input type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px;">
+  <input id="title" type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px;">
   <br>
   <br>
 
   <h5>간단 소개</h5>
-  <input type="RecipeTitle" class="#" placeholder="레시피의 간단한 설명을 적어주세요" style="width:400px; height:200px;">
+  <input id="simpleintro" class="#" placeholder="레시피의 간단한 설명을 적어주세요" style="width:400px; height:200px;">
   <br>
   <br>
 
@@ -87,7 +92,7 @@
   <br>
 
   <label>인분</label>
-  <input type="human" class="#" placeholder="인수선택" style="width:100px;" id="human">
+  <input id="human" type="human" class="#" placeholder="인수선택" style="width:100px;" id="human">
 
   <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 100px; display: inline-block;" onchange="handleOnChange5(this)">
     <option selected></option>
@@ -131,7 +136,7 @@
   <!-- <a class="#" href="./add_admin.html" style="text-decoration-line: none ;"> -->
     <div class="d-grid gap-2 d-md-flex justify-content-md-middle">
       <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
-      <button class="btn btn-primary btn-warning" type="button">레시피 등록</button>
+      <button id="writeBtn" class="btn btn-primary btn-warning" type="button">레시피 등록</button>
     </div>
   <!-- </a> -->
 
@@ -139,5 +144,99 @@
   </div>
 
   <script src="./writeRecipe.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyD5Siv5pV8pGTXpgd8OAMdQd8JTp390u5w",
+      authDomain: "newrepbook-587cf.firebaseapp.com",
+      databaseURL: "https://newrepbook-587cf-default-rtdb.firebaseio.com",
+      projectId: "newrepbook-587cf",
+      storageBucket: "newrepbook-587cf.appspot.com",
+      messagingSenderId: "986136626008",
+      appId: "1:986136626008:web:bdd8f7beeceae8f66c5b2d",
+      measurementId: "G-C25WXHVHZE"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import {getDatabase, ref, set, push, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+    const db = getDatabase();
+  
+
+    var Date = document.getElementById("date");
+    var thumbnails = document.getElementById("thumbnails");
+    var title = document.getElementById("title");
+    var simpleintro = document.getElementById("simpleintro");
+
+    var tag1 = document.getElementById("tag1");
+    var tag2 = document.getElementById("tag2");
+    var tag3 = document.getElementById("tag3");
+    var tag4 = document.getElementById("tag4");
+
+    var human = document.getElementById("human");
+
+    var f1 = document.getElementById("f1");
+    var f2 = document.getElementById("f2");
+    var f3 = document.getElementById("f3");
+    var f4 = document.getElementById("f4");
+    var f5 = document.getElementById("f5");
+
+    var ff1 = document.getElementById("ff1");
+    var ff2 = document.getElementById("ff2");
+    var ff3 = document.getElementById("ff3");
+    var ff4 = document.getElementById("ff4");
+    var ff5 = document.getElementById("ff5");
+
+    var writeBtn = document.getElementById("writeAnnounce");
+
+    //const recipeid = push(child(ref(db), 'recipe')).key;
+
+    function Insert(){
+      set(ref(db, "recipe/" + recipeid),{
+        Date : date.value,
+        thumbnails : thumbnails.value,
+        title : title.value,
+        simpleintro : simpleintro.value,
+        tag1 : tag1.value,
+        tag2 : tag2.value,
+        tag3 : tag3.value,
+        tag4 : tag4.value,
+        human : human.value,
+        f1 : f1.value,
+        f2 : f2.value,
+        f3 : f3.value,
+        f4 : f4.value,
+        f5 : f5.value,
+        ff1 : ff1.value,
+        ff2 : ff2.value,
+        ff3 : ff3.value,
+        ff4 : ff4.value,
+        ff5 : ff5.value
+      })
+      .then(()=> {
+        alert("레시피가 등록되었습니다!")
+        window.location.href = "recipe.html";
+      })
+      .catch((error)=>{
+        alert("unsuccessful, error" + error);
+      });
+    }
+
+    writeBtn.addEventListener('click', Insert);
+
+  </script>
+
 </body>
 </html>

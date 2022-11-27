@@ -262,8 +262,9 @@
     //$('#adminListDbTable td').remove();
     //console.log("test")
     var rowNum = 0;
-
+  
     const db = getDatabase(app);
+    //const userInfo = push(child(ref(db), 'Users')).key;
     const dbref = ref(db, 'Users');
 
     onValue(dbref, (snapshot) => {
