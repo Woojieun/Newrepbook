@@ -131,6 +131,14 @@
   <br>
   <input id="ff5" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
   <br>
+  <br>
+
+  <h5>조리 방법</h5>
+  <input id="ct1" class="#" placeholder="방법 1을 입력해주세요" style="width:600px;">
+  <input id="ct2" class="#" placeholder="방법 2을 입력해주세요" style="width:600px;">
+  <input id="ct3" class="#" placeholder="방법 3을 입력해주세요" style="width:600px;">
+  <input id="ct4" class="#" placeholder="방법 4을 입력해주세요" style="width:600px;">
+  <input id="ct5" class="#" placeholder="방법 5을 입력해주세요" style="width:600px;">
 
   <br>
   <!-- <a class="#" href="./add_admin.html" style="text-decoration-line: none ;"> -->
@@ -149,6 +157,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+    import { getFirestore, collection, setDoc, addDoc  } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -169,73 +178,75 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
 
-    import {getDatabase, ref, set, push, child, update, remove}
-    from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(app);
 
-    const db = getDatabase();
+    var writeBtn = document.getElementById("writeBtn");
+    writeBtn.addEventListner('click', (e) => {
+
+      //publisher
+      var date = document.getElementById("date").value;
+      //profile
+      var thumbnails = document.getElementById("thumbnails").value;
+      var title = document.getElementById("title").value;
+      var simpleintro = document.getElementById("simpleintro").value;
   
+      var tag1 = document.getElementById("tag1").value;
+      var tag2 = document.getElementById("tag2").value;
+      var tag3 = document.getElementById("tag3").value;
+      var tag4 = document.getElementById("tag4").value;
+  
+      var human = document.getElementById("human").value;
+  
+      var f1 = document.getElementById("f1").value;
+      var f2 = document.getElementById("f2").value;
+      var f3 = document.getElementById("f3").value;
+      var f4 = document.getElementById("f4").value;
+      var f5 = document.getElementById("f5").value;
+  
+      var ff1 = document.getElementById("ff1").value;
+      var ff2 = document.getElementById("ff2").value;
+      var ff3 = document.getElementById("ff3").value;
+      var ff4 = document.getElementById("ff4").value;
+      var ff5 = document.getElementById("ff5").value;
 
-    var Date = document.getElementById("date");
-    var thumbnails = document.getElementById("thumbnails");
-    var title = document.getElementById("title");
-    var simpleintro = document.getElementById("simpleintro");
+      //contents
+      var ct1 = document.getElementById("ct1").value;
+      var ct2 = document.getElementById("ct2").value;
+      var ct3 = document.getElementById("ct3").value;
+      var ct4 = document.getElementById("ct4").value;
+      var ct5 = document.getElementById("ct5").value;
 
-    var tag1 = document.getElementById("tag1");
-    var tag2 = document.getElementById("tag2");
-    var tag3 = document.getElementById("tag3");
-    var tag4 = document.getElementById("tag4");
-
-    var human = document.getElementById("human");
-
-    var f1 = document.getElementById("f1");
-    var f2 = document.getElementById("f2");
-    var f3 = document.getElementById("f3");
-    var f4 = document.getElementById("f4");
-    var f5 = document.getElementById("f5");
-
-    var ff1 = document.getElementById("ff1");
-    var ff2 = document.getElementById("ff2");
-    var ff3 = document.getElementById("ff3");
-    var ff4 = document.getElementById("ff4");
-    var ff5 = document.getElementById("ff5");
-
-    var writeBtn = document.getElementById("writeAnnounce");
-
-    //const recipeid = push(child(ref(db), 'recipe')).key;
-
-    function Insert(){
-      set(ref(db, "recipe/" + recipeid),{
-        Date : date.value,
-        thumbnails : thumbnails.value,
-        title : title.value,
-        simpleintro : simpleintro.value,
-        tag1 : tag1.value,
-        tag2 : tag2.value,
-        tag3 : tag3.value,
-        tag4 : tag4.value,
-        human : human.value,
-        f1 : f1.value,
-        f2 : f2.value,
-        f3 : f3.value,
-        f4 : f4.value,
-        f5 : f5.value,
-        ff1 : ff1.value,
-        ff2 : ff2.value,
-        ff3 : ff3.value,
-        ff4 : ff4.value,
-        ff5 : ff5.value
-      })
-      .then(()=> {
-        alert("레시피가 등록되었습니다!")
-        window.location.href = "recipe.html";
-      })
-      .catch((error)=>{
-        alert("unsuccessful, error" + error);
+       addDoc(collection(db, "posts"), {
+        //앞에가 DB 필드 이름
+        createdAt : date,
+        profile : thumbnails,
+        title : title,
+        simpleintro : simpleintro,
+        tag1 : tag1,
+        tag2 : tag2,
+        tag3 : tag3,
+        tag4 : tag4,
+        human : human,
+        f1 : f1,
+        f2 : f2,
+        f3 : f3,
+        f4 : f4,
+        f5 : f5,
+        ff1 : ff1,
+        ff2 : ff2,
+        ff3 : ff3,
+        ff4 : ff4,
+        ff5 : ff5,
+        ct1 : ct1,
+        ct2 : ct2,
+        ct3 : ct3,
+        ct4 : ct4,
+        ct5 : ct5
       });
-    }
 
-    writeBtn.addEventListener('click', Insert);
-
+      alert('레시피가 등록되었습니다!');
+    });
   </script>
 
 </body>
