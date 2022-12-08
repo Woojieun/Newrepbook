@@ -94,6 +94,7 @@
               <li><a class="dropdown-item" href="admin_announce.html">공지사항</a></li>
             </ul>
           </li>
+
         </ul>
 
         <a id="main_name"></a>
@@ -107,116 +108,6 @@
 
   <br>
   <br>
-
-
-  <!-- 상단바 아래의 컨텐츠 부분 -->
-  <div class="container">
-    <!-- <hr class="myHr">  -->
-    <div class="row">
-      <div class="col-7">
-        <h2>관리자 공지사항</h2>
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
-      <div class="col">
-
-        <nav class="navbar bg-light">
-          <div class="container-fluid">
-            <form class="d-flex" role="search">
-              <select class="form-select myjob me-1" id="type" aria-label="Default select example" id="my">
-                <!-- <option value="기본"></option> -->
-                <option value="아이디">아이디</option>
-                <option value="회원명">회원명</option>
-              </select>
-
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </nav>
-
-      </div>
-      <div>
-
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <table class="table table-hover mytb" id="announceTable">
-          <thead class="table-light">
-            <thead>
-
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">제목</th>
-                <!-- <th scope="col">작성자</th>
-                                  <th scope="col">아이디</th> -->
-                <th scope="col">회원등급</th>
-              </tr>
-            </thead>
-          </thead>
-          <tbody>
-            <tr>
-          </tbody>
-
-        </table>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <!-- 게시판 페이지 부분 폼 => 한 페이지당 10명씩 한번에 5페이지, 양쪽 끝 버튼은 맨 처음과 맨 끝으로 이동 -->
-
-
-    <!-- 화면에 그려질 첫 번째 페이지 : 화면에 그려질 마지막 페이지 - (한 화면에 나타낼 페이지 - 1)
-          (단, 계산된 값이 0 이하이면 첫번째 페이지는 1이다.)
-        
-        화면에 그려질 마지막 페이지 : 화면에 보여질 페이지 그룹 * 한 화면에 나타낼 페이지
-          (단, 계산된 값이 총 페이지수보다 많으면 마지막 페이지는 은 총 페이지 수이다.) -->
-
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lt;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&gt;</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-
-    <a class="#" href="./write_announce.html" style="text-decoration-line: none ;">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
-        <button class="btn btn-primary btn-warning" type="button">공지사항 작성</button>
-      </div>
-    </a>
-
-  </div>
-
 
   </div>
   </div>
@@ -247,34 +138,48 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
 
-    import {getDatabase, ref, set, update, remove, onValue}
+    import {getDatabase, ref, set, update, remove, onValue, push, child}
     from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 
 
     //$('#adminListDbTable td').remove();
     //console.log("test")
-    var rowNum = 0;
 
+    //여기서 해야되는건 유저 리얼타임 DB 경로 설정해주는거만 하면 됨
+
+    var rowNum = 0;
+  
     const db = getDatabase(app);
-    const dbref = ref(db, 'announce');
+    const userid = push(child(ref(db), 'users/')).key;
+
+    const dbref = ref(db, 'users/');
+    console.log(dbref);
 
     onValue(dbref, (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
+        console.log(childKey);
+        //qejlkflfsjfsjfljlfjsj 이게 나옴
         const childData = childSnapshot.val();
+        console.log(childData);
+        //여기서 Personal Data랑 buy가 나옴
+        const userdata = childData.PersonalData;
+        console.log(userdata);
+        //console.log(childData.buy);
 
+
+        //onClick="location.href='링크주소'"
         rowNum += 1;
         var row =
-        "<tr><td>" + rowNum +
-          "</td><td>" + childData.title +
-            // "</td><td>" + childData.comment +
-              "</td><td>" + "관리자" +
+        "<tr onClick='location.href=&quot;userdata.html&quot;'><td>" + rowNum +
+          "</td><td>" + userdata.name + "</td><td>" + userdata.nick +
+            "</td><td>" + userdata.email + "</td><td>" + "일반" +
               "</td></tr>"
               console.log(row);
 
-        $(row).appendTo('#announceTable')
+        $(row).appendTo('#userDataTable')
 
-      });
+      }); 
     }, {
       onlyOnce: true
     });
