@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<!-- 부트 스트랩 연결 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- 부트스트랩 CSS만 붙여왔을 때는 드롭다운이 작동을 안함, 그래서 부트스르탭 번들 코드를 붙여넣으니까 작동함 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<body class="position-relative" style="background-color: rgb(243, 228, 168);">
+
+  <div class="position-absolute top-0 start-50 translate-middle-x">
+    <form>
+      <br>
+      <h3>레시피 등록</h3>
+      <hr>
+
+      <h5>작성일</h5>
+      <input id="date" type="RecipeDate" class="#" placeholder="ex.2022.11.27" style="width:400px;">
+      <hr>
+
+      <h5>음식 대표 사진</h5>
+
+      <label style="size: 3px; color: rgb(93, 93, 93);">첨부할 이미지를 끌어다 놔주세요</label>
+      <div id="drop"
+        style="border:1px solid black; width:700px; height:500px; padding:3px; background-color: white; color : black; ">
+        <div id="thumbnails"></div>
+      </div>
+      <br>
+      <label>파일명</label>
+      <input id="imgName" type="RecipeDate" class="#" style="width:400px;">
+      <hr>
+
+      <h5>레시피명</h5>
+      <input id="title" type="RecipeTitle" class="#" placeholder="레시피명을 입력해주세요" style="width:400px;">
+      <hr>
+
+      <h5>간단 소개</h5>
+      <input id="simpleintro" class="#" placeholder="레시피의 간단한 설명을 적어주세요" style="width:400px; height:200px;">
+      <hr>
+
+      <h5>레시피 카테고리 선택</h5>
+      <input type="tag1" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag1">
+
+      <select class="form-select form-select-sm" style="width: 100px; display: inline-block;"
+        onchange="handleOnChange1(this)">
+        <option selected></option>
+        <option value="1">한식</option>
+        <option value="2">일식</option>
+        <option value="3">중식</option>
+        <option value="3">양식</option>
+      </select>
+
+      <br>
+
+      <input type="tag2" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag2">
+
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+        style="width: 100px; display: inline-block;" onchange="handleOnChange2(this)">
+        <option selected></option>
+        <option value="육류">육류</option>
+        <option value="해산물">해산물</option>
+      </select>
+
+      <br>
+
+      <input type="tag3" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag3">
+
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+        style="width: 100px; display: inline-block;" onchange="handleOnChange3(this)">
+        <option selected></option>
+        <option value="1">초급</option>
+        <option value="2">중급</option>
+        <option value="3">고급</option>
+      </select>
+
+      <br>
+
+      <input type="tag4" class="#" placeholder="카테고리를 선택해주세요" style="width:250px;" id="tag4">
+
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+        style="width: 100px; display: inline-block;" onchange="handleOnChange4(this)">
+        <option selected></option>
+        <option value="1">비건</option>
+        <option value="2">명절</option>
+      </select>
+      <hr>
+
+      <label>인분</label>
+      <input id="human" type="human" class="#" placeholder="인수선택" style="width:100px;" id="human">
+
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example"
+        style="width: 100px; display: inline-block;" onchange="handleOnChange5(this)">
+        <option selected></option>
+        <option value="1">1인분</option>
+        <option value="2">2인분</option>
+        <option value="3">3인분</option>
+        <option value="4">4인분</option>x
+      </select>
+      <hr>
+
+      <label>재료</label> <button style="width: 30px;">+</button> <button style="width: 30px;">-</button>
+      <br>
+      <br>
+      <input id="f1" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="f2" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="f3" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="f4" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="f5" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <label>--------------------------------------------</label>
+      <br>
+      <label>양념</label> <button style="width: 30px;">+</button> <button style="width: 30px;">-</button>
+      <br>
+      <br>
+      <input id="ff1" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="ff2" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="ff3" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="ff4" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <br>
+      <input id="ff5" type="infood" class="#" placeholder="재료 입력" style="width:250px;">
+      <hr>
+
+      <h5>조리 방법</h5>
+      <input id="ct1" class="#" placeholder="방법 1을 입력해주세요" style="width:600px;">
+      <input id="ct2" class="#" placeholder="방법 2을 입력해주세요" style="width:600px;">
+      <input id="ct3" class="#" placeholder="방법 3을 입력해주세요" style="width:600px;">
+      <input id="ct4" class="#" placeholder="방법 4을 입력해주세요" style="width:600px;">
+      <input id="ct5" class="#" placeholder="방법 5을 입력해주세요" style="width:600px;">
+      <hr>
+
+      <!-- <a class="#" href="./add_admin.html" style="text-decoration-line: none ;"> -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-middle">
+        <!-- <button class="btn btn-primary me-md-2" type="button">Button</button> -->
+        <button id="writeBtn" class="btn btn-primary btn-warning" type="button">레시피 등록</button>
+      </div>
+      <!-- </a> -->
+
+    </form>
+  </div>
+  <script src="./time.js"></script>
+  <script src="./handlechange.js"></script>
+  <!-- <script src="./writeRecipe.js"></script> -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+    import { getFirestore, collection, setDoc, addDoc  } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+    import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL, uploadBytes  } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyD5Siv5pV8pGTXpgd8OAMdQd8JTp390u5w",
+      authDomain: "newrepbook-587cf.firebaseapp.com",
+      databaseURL: "https://newrepbook-587cf-default-rtdb.firebaseio.com",
+      projectId: "newrepbook-587cf",
+      storageBucket: "newrepbook-587cf.appspot.com",
+      messagingSenderId: "986136626008",
+      appId: "1:986136626008:web:bdd8f7beeceae8f66c5b2d",
+      measurementId: "G-C25WXHVHZE"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(app);
+
+    var writeBtn = document.getElementById("writeBtn");
+
+    var uploadFiles = [];
+
+//Drag & drop
+var drop = $("#drop");
+
+drop.on("dragenter", function (e) { //드래그 요소가 들어왔을떄
+    $(this).addClass('drag-over');
+}).on("dragleave", function (e) { //드래그 요소가 나갔을때
+    $(this).removeClass('drag-over');
+}).on("dragover", function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+}).on('drop', function (e) { //드래그한 항목을 떨어뜨렸을때
+    e.preventDefault();
+    $(this).removeClass('drag-over');
+
+    //이미지 미리보기 구현
+    var files = e.originalEvent.dataTransfer.files; //드래그&드랍 항목
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var size = uploadFiles.push(file); //업로드 목록에 추가
+        preview(file, size - 1); //미리보기 만들기
+    }
+});
+
+    function preview(file, idx) {
+      var reader = new FileReader();
+          reader.onload = (function (f, idx) {
+        return function (e) {
+            var div = '<div class="thumb"> \
+                        <div class="close" data-idx="' + idx + '">X</div> \
+                        <img id=profile src="' + e.target.result + '" title="' + escape(f.name) + '"/style="width:500px; height:450px"> \
+                        </div>';
+        $("#thumbnails").append(div);
+      };
+    })(file, idx);
+    reader.readAsDataURL(file);
+    // var ImgToUpload = files[0];
+    document.getElementById("imgName").value = file.name;
+
+      var ImgName = document.getElementById("imgName").value;
+      const storage = getStorage();
+      const storageRef = sRef(storage, "Profile/" + ImgName);
+
+      uploadBytes(storageRef, file).then((Snapshot) => {
+      console.log(file.name + "이 storage에 등록되었습니다.");
+    })
+}
+
+$("#thumbnails").on("click", ".close", function (e) {
+    var $target = $(e.target);
+    var idx = $target.attr('data-idx');
+    uploadFiles[idx].upload = 'disable'; //삭제된 항목은 업로드하지 않기 위해 플래그 생성
+    $target.parent().remove(); //프리뷰 삭제
+});
+
+
+    function addRec()
+    {
+
+      var ImgName = document.getElementById("imgName").value;
+
+      const storage = getStorage();
+      const storageRef = sRef(storage, "Profile/" + ImgName);
+
+    getDownloadURL(storageRef).then((url) => {
+      const img = document.getElementById('profile');
+      console.log(img);
+      img.setAttribute('src', url);
+      console.log(url);
+      document.getElementById("profile").value = url;
+      console.log(document.getElementById("profile").value);
+    })
+      //publisher
+      var date = document.getElementById("date").value;
+      //profile
+      var profile = document.getElementById("profile").value;
+      var title = document.getElementById("title").value;
+      var simpleintro = document.getElementById("simpleintro").value;
+  
+      var tag1 = document.getElementById("tag1").value;
+      var tag2 = document.getElementById("tag2").value;
+      var tag3 = document.getElementById("tag3").value;
+      var tag4 = document.getElementById("tag4").value;
+  
+      var human = document.getElementById("human").value;
+  
+      var f1 = document.getElementById("f1").value;
+      var f2 = document.getElementById("f2").value;
+      var f3 = document.getElementById("f3").value;
+      var f4 = document.getElementById("f4").value;
+      var f5 = document.getElementById("f5").value;
+  
+      var ff1 = document.getElementById("ff1").value;
+      var ff2 = document.getElementById("ff2").value;
+      var ff3 = document.getElementById("ff3").value;
+      var ff4 = document.getElementById("ff4").value;
+      var ff5 = document.getElementById("ff5").value;
+
+      //contents
+      var ct1 = document.getElementById("ct1").value;
+      var ct2 = document.getElementById("ct2").value;
+      var ct3 = document.getElementById("ct3").value;
+      var ct4 = document.getElementById("ct4").value;
+      var ct5 = document.getElementById("ct5").value;
+
+       addDoc(collection(db, "posts"), {
+        //앞에가 DB 필드 이름
+        createdAt : date,
+        profile : profile,
+        title : title,
+        simpleintro : simpleintro,
+        tag1 : tag1,
+        tag2 : tag2,
+        tag3 : tag3,
+        tag4 : tag4,
+        human : human,
+        f1 : f1,
+        f2 : f2,
+        f3 : f3,
+        f4 : f4,
+        f5 : f5,
+        ff1 : ff1,
+        ff2 : ff2,
+        ff3 : ff3,
+        ff4 : ff4,
+        ff5 : ff5,
+        ct1 : ct1,
+        ct2 : ct2,
+        ct3 : ct3,
+        ct4 : ct4,
+        ct5 : ct5
+      });
+
+      alert('레시피가 등록되었습니다!');
+    }
+
+    writeBtn.addEventListener('click', addRec);
+  </script>
+
+</body>
+
+</html>
