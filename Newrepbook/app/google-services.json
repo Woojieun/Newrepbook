@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "577554524712",
+    "firebase_url": "https://newrepbook-5cdc3-default-rtdb.firebaseio.com",
+    "project_id": "newrepbook-5cdc3",
+    "storage_bucket": "newrepbook-5cdc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577554524712:android:3109b93e1afa0ae3af631d",
+        "android_client_info": {
+          "package_name": "com.example.newrepbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577554524712-4bgi41kja05mk6sdl2iso39mhei9kcat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvQaD6K6_swsfwtFLhdfM8gZRI-BrqE7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577554524712-4bgi41kja05mk6sdl2iso39mhei9kcat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
