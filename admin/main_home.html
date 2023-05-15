@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newrepbook</title>
+  <!-- 부트 스트랩 연결 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- 부트스트랩 CSS만 붙여왔을 때는 드롭다운이 작동을 안함, 그래서 부트스르탭 번들 코드를 붙여넣으니까 작동함 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="background-color: rgb(243, 228, 168);">
+  <!-- 네비게이션 바 -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning bg-opacity-25 navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- 사진 누르면 홈으로 돌아오기 -->
+      <a class="navbar-brand" href="main_home.html">
+        <img src="./요리조리1.png" width="200" height="70" style="border: 01px solid rgba(0, 0, 0, 0.363);">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="main_home.html">Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              회원
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="user_list.html">등록 및 관리</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              레시피
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="recipe.html">등록 및 관리</a></li>
+              <li>
+                <!-- <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">후기</a></li> -->
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              쇼핑
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="shopping.html">등록 및 관리</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">주문, 취소, 반품</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">후기, 문의</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              관리자 커뮤니티
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="admin_list.html">관리자 관리</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="admin_announce.html">공지사항</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">매출</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">매출 통계</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <a id="main_name"></a>
+        <a href="admin_login.html" style="color: white ;">
+          <form class="d-flex" role="logout">
+            <button type="button" class="btn btn-light login">로그아웃</button>
+          </form>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+  <br>
+
+  <!-- 최신 레시피 캐러셀 -->
+  <h3 style="color:black; text-align: center;">< 최신 레시피 ></h3>
+  <br>
+  <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators" style="color:white ;">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner" style="text-align: center ;">
+
+      <div class="carousel-item active">
+        <img src="소곱창 구이.jpg" width="900" height="600"  alt="...">
+        <div class="carousel-caption">
+          <h5 style="color:white ;">소곱창 구이</h5>
+          <p style="color:white ;">지글지글 맛있는 소곱창 구이</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="알탕.jpg" width="900" height="600"  alt="...">
+        <div class="carousel-caption">
+          <h5 style="color:white ;">알탕</h5>
+          <p style="color:white ;">해장하기 딱 좋은 얼큰 시원 알탕</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="육회.jpg" width="900" height="600"  alt="...">
+        <div class="carousel-caption">
+          <h5 style="color:white ;">육회</h5>
+          <p style="color:white ;">입에서 살살 녹는 육회</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">이전</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">다음</span>
+    </button>
+  </div>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    var firebaseEmailAuth; //파이어베이스 email 인증 전역변수
+    var firebaseDatabase; //파이어베이스 db 전역변수
+    var name; //직원 이름
+    var loginStaffKey; //로그인한 직원의 부모 key
+    var staffInfo; //로그인한 직원의 정보
+
+    //파이어 베이스 초기화 코드
+    var config = {
+      apiKey: "AIzaSyD5Siv5pV8pGTXpgd8OAMdQd8JTp390u5w",
+      authDomain: "newrepbook-587cf.firebaseapp.com",
+      databaseURL: "https://newrepbook-587cf-default-rtdb.firebaseio.com",
+      projectId: "newrepbook-587cf",
+      storageBucket: "newrepbook-587cf.appspot.com",
+      messagingSenderId: "986136626008",
+      appId: "1:986136626008:web:bdd8f7beeceae8f66c5b2d",
+      measurementId: "G-C25WXHVHZE"
+    };
+    //파이어베이스 초기화
+    firebase.initializeApp(config);
+    //인증모듈 객체 가져오기
+    firebaseEmailAuth = firebase.auth();
+    //데이터베이스 모듈객체 가져오기
+    firebaseDatabase = firebase.database();
+
+    //세션 체크 함수
+    staffSessionCheck();
+
+
+    //직원이 로그인 했는지 안했는지 확인해주는 함수
+    function staffSessionCheck() {
+
+      //로그인이 되어있으면 - 직원이 있으면, staff를 인자값으로 넘겨준다.
+      firebaseEmailAuth.onAuthStateChanged(function (staff) {
+
+        if (staff) {
+          //조회 - 데이터 베이스에 저장된 닉네임을 현재 접속되어 있는 staff의 pk key 값을 이용해서 가져오기
+          firebaseDatabase.ref("staffs/" + staff.uid).once('value').then(function (snapshot) {
+
+            //자바스크립트 dom 선택자를 통해서 네비게이션 메뉴의 엘리먼트 변경해주기
+            document.getElementById("loginmenu").textContent = "로그아웃";
+            document.getElementById("loginmenu").href = "admin_logout.html";
+
+            document.getElementById("main_name").textContent = snapshot.val().name + " 님"; // 로그인히면 직원 이름 메인에 뜨기
+            document.getElementById("joinmenu").href = "admin_join.html";
+
+            name = snapshot.val().name; //직원 이름은 계속 사용할거기 때문에 전역변수
+            loginStaffKey = snapshot.key; //로그인한 직원의 key도 계속 쓸 것이기 때문에 전역변수
+            staffInfo = snapshot.val(); //snapshot.val()에 staff 테이블에 있는 해당 개체 정보가 넘어옴. staffInfo에 대입!
+
+            return true
+          });
+
+        } else {
+          // 로그인을 하지 않으면 메인 페이지 텍스트 내용을 "로그인 후 사용해주세요" 한다.
+          $('#comment').val("로그인 후 사용해주세요");
+          return false
+        }
+      });
+    }
+
+    // 
+    $(document).ready(function () {
+
+      //메인화면 저장버튼 눌렀을 때
+      $(document).on('click', '.write', function () {
+
+        //네비게이션 메뉴의 text값 가져오기
+        var seseionCheck = document.getElementById("loginmenu").textContent;
+
+        //내가 쓴글 가져오기 - jquery방식으로 가져왔다.
+        comment = $('#comment').val();
+        if (seseionCheck == "로그아웃") {
+          //저장하기
+          save();
+        } else {
+          alert("로그인이 필요한 서비스 입니다.")
+        }
+      });
+    });
+
+    //저장 버튼 눌렀을 때 호출 되는 함수
+    function save() {
+
+      //webPosts 라는 테이블을 만들고 하위 데이터에 유저 아이디를 넣어준다. 그곳에 push로 가상의 키를 넣고, 객체를 넣어준다.!!!!
+      var webPostsRef = firebaseDatabase.ref("webPosts");
+
+      // 해당 객체의 key 값이 자동으로 생성된다.
+      var webPosts = webPostsRef.push(); // 해당 객체의 key 값이 자동으로 생성된다.
+
+      //로그인한 유저의 pk값,이름,내용,시간 데이터
+      var obj = {
+        staffkey: loginStaffKey, // 직원 UID
+        name: name, // 직원 이름
+        comment: comment // 글 내용
+      };
+
+      //위에서 thankRef.push()로 만들어진 key아래 위치에 저장해준다.
+      webPosts.set(obj);
+
+      $('#comment').val("");
+    }
+  </script>
+</body>
+
+</html>

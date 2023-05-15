@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그아웃</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    var firebaseEmailAuth; //파이어베이스 email 변수
+
+    //파이어 베이스 초기화 코드
+    var config = {
+      // apiKey: "AIzaSyArSiBpwDsXhAKrKr8J5tqen4__A6liIgs",
+      // authDomain: "newrepbook-4eef6.firebaseapp.com",
+      // databaseURL: "https://newrepbook-4eef6-default-rtdb.firebaseio.com",
+      // projectId: "newrepbook-4eef6",
+      // storageBucket: "newrepbook-4eef6.appspot.com",
+      // messagingSenderId: "849789232224",
+      // appId: "1:849789232224:web:7a3aa11321d294e3c54f05",
+      // measurementId: "G-D3NPHZJHXX"
+      apiKey: "AIzaSyD5Siv5pV8pGTXpgd8OAMdQd8JTp390u5w",
+      authDomain: "newrepbook-587cf.firebaseapp.com",
+      databaseURL: "https://newrepbook-587cf-default-rtdb.firebaseio.com",
+      projectId: "newrepbook-587cf",
+      storageBucket: "newrepbook-587cf.appspot.com",
+      messagingSenderId: "986136626008",
+      appId: "1:986136626008:web:bdd8f7beeceae8f66c5b2d",
+      measurementId: "G-C25WXHVHZE"
+    };
+
+    //파이어베이스 초기화
+    firebase.initializeApp(config);
+
+    //인증 객체 가져오기
+    firebaseEmailAuth = firebase.auth();
+
+
+    firebaseEmailAuth.signOut().then(function () {
+      //메인 페이지로 이동시키고 세션 저장
+      window.location.href = "admin_login.html"
+    }).catch(function (error) {
+      if (error) {
+        alert("로그인 실패");
+      }
+    });
+  </script>
+</body>
+
+</html>
